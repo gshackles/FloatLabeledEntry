@@ -23,8 +23,9 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-using MonoTouch.UIKit;
+using System;
 using System.Drawing;
+using MonoTouch.UIKit;
 
 namespace JVFloatSharp
 {
@@ -63,8 +64,10 @@ namespace JVFloatSharp
 
 				_floatingLabel.Text = value;
 				_floatingLabel.SizeToFit();
-				_floatingLabel.Frame = new RectangleF(0, _floatingLabel.Font.LineHeight, 
-				                                      _floatingLabel.Frame.Size.Width, _floatingLabel.Frame.Size.Height);
+				_floatingLabel.Frame = 
+					new RectangleF(
+						0, _floatingLabel.Font.LineHeight, 
+						_floatingLabel.Frame.Size.Width, _floatingLabel.Frame.Size.Height);
 			}
 		}
 
@@ -85,69 +88,63 @@ namespace JVFloatSharp
 		{
 			var rect = base.ClearButtonRect(forBounds);
 
-			return new RectangleF(rect.X, rect.Y + _floatingLabel.Font.LineHeight / 2.0f, 
-			                      rect.Size.Width, rect.Size.Height);
+			return new RectangleF(
+				rect.X, rect.Y + _floatingLabel.Font.LineHeight / 2.0f, 
+			  	rect.Size.Width, rect.Size.Height);
 		}
 
 		public override void LayoutSubviews()
 		{
 			base.LayoutSubviews();
 
-			if (IsFirstResponder)
+			Action updateLabel = () =>
 			{
-				if (string.IsNullOrEmpty(Text))
+				if (!string.IsNullOrEmpty(Text))
 				{
-					hideFloatingLabel();
+					_floatingLabel.Alpha = 1.0f;
+					_floatingLabel.Frame = 
+						new RectangleF(
+							_floatingLabel.Frame.Location.X, 
+							2.0f, 
+							_floatingLabel.Frame.Size.Width, 
+							_floatingLabel.Frame.Size.Height);
 				}
 				else
 				{
-					_floatingLabel.TextColor = FloatingLabelActiveTextColor;
-					showFloatingLabel();
+					_floatingLabel.Alpha = 0.0f;
+					_floatingLabel.Frame = 
+						new RectangleF(
+							_floatingLabel.Frame.Location.X,
+							_floatingLabel.Font.LineHeight,
+							_floatingLabel.Frame.Size.Width,
+							_floatingLabel.Frame.Size.Height);
 				}
+			};
+
+			if (IsFirstResponder)
+			{
+				_floatingLabel.TextColor = FloatingLabelActiveTextColor;
+
+				UIView.Animate(
+					0.3f, 0.0f, 
+					UIViewAnimationOptions.BeginFromCurrentState | UIViewAnimationOptions.CurveEaseOut, 
+					() => updateLabel(), null);
 			}
 			else
 			{
 				_floatingLabel.TextColor = FloatingLabelTextColor;
 
-				if (string.IsNullOrEmpty(Text))
-				{
-					hideFloatingLabel();
-				}
-				else
-				{
-					showFloatingLabel();
-				}
+				updateLabel();
 			}
-		}
-
-		private void showFloatingLabel()
-		{
-			UIView.Animate(0.3f, 0.0f, UIViewAnimationOptions.BeginFromCurrentState | UIViewAnimationOptions.CurveEaseOut, () =>
-			{
-				_floatingLabel.Alpha = 1.0f;
-				_floatingLabel.Frame = new RectangleF(_floatingLabel.Frame.X, 2.0f, 
-				                                      _floatingLabel.Frame.Size.Width, _floatingLabel.Frame.Size.Height);
-			}, null);
-		}
-
-		private void hideFloatingLabel()
-		{
-			UIView.Animate(0.3f, 0, UIViewAnimationOptions.BeginFromCurrentState | UIViewAnimationOptions.CurveEaseIn, () =>
-			{
-				_floatingLabel.Alpha = 0.0f;
-			}, () =>
-			{
-				_floatingLabel.Frame = new RectangleF(_floatingLabel.Frame.X, _floatingLabel.Font.LineHeight, 
-				                                      _floatingLabel.Frame.Size.Width, _floatingLabel.Frame.Size.Height);
-			});
 		}
 
 		private static RectangleF InsetRect(RectangleF rect, UIEdgeInsets insets)
 		{
-			return new RectangleF(rect.X + insets.Left, 
-			                      rect.Y + insets.Top, 
-			                      rect.Width - insets.Left - insets.Right, 
-			                      rect.Height - insets.Top - insets.Bottom);
+			return new RectangleF(
+				rect.X + insets.Left, 
+				rect.Y + insets.Top, 
+				rect.Width - insets.Left - insets.Right, 
+				rect.Height - insets.Top - insets.Bottom);
 		}
 	}
 }
