@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="monotouch" />
+    <Reference Include="MonoTouch.Dialog-1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -94,6 +95,10 @@
     <Compile Include="..\JVFloatLabeledTextField.cs">
       <Link>JVFloatLabeledTextField.cs</Link>
     </Compile>
+    <Compile Include="..\JVFloatLabeledEntryElement.cs">
+      <Link>JVFloatLabeledEntryElement.cs</Link>
+    </Compile>
+    <Compile Include="DialogDemoViewController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

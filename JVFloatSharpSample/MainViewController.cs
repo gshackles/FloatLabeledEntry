@@ -99,6 +99,11 @@ namespace JVFloatSharpSample
 			View.AddSubview(descriptionField);
 
 			titleField.BecomeFirstResponder();
+
+			NavigationItem.RightBarButtonItem = new UIBarButtonItem("Dialog Demo", UIBarButtonItemStyle.Plain, delegate
+			{
+				this.NavigationController.PushViewController(new DialogDemoViewController(), true);
+			});
 		}
 	}
 }
