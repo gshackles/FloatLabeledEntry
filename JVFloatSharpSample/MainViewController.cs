@@ -51,7 +51,8 @@ namespace JVFloatSharpSample
 				Font = UIFont.SystemFontOfSize(JVFieldFontSize),
 				FloatingLabelFont = UIFont.BoldSystemFontOfSize(JVFieldFloatingLabelFontSize),
 				FloatingLabelTextColor = floatingLabelColor,
-				FloatingLabelActiveTextColor = floatingLabelActiveColor
+				FloatingLabelActiveTextColor = floatingLabelActiveColor,
+				Text = "3.14"
 			};
 			View.AddSubview(priceField);
 

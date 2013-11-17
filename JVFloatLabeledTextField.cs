@@ -113,6 +113,10 @@ namespace JVFloatSharp
 				{
 					hideFloatingLabel();
 				}
+				else
+				{
+					showFloatingLabel();
+				}
 			}
 		}
 
