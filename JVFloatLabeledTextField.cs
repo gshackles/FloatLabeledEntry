@@ -32,7 +32,6 @@ namespace JVFloatSharp
 	public class JVFloatLabeledTextField : UITextField 
 	{
 		private readonly UILabel _floatingLabel;
-		private bool _isAnimating;
 
 		public UIColor FloatingLabelTextColor { get; set; }
 		public UIColor FloatingLabelActiveTextColor { get; set; }
@@ -125,23 +124,24 @@ namespace JVFloatSharp
 
 			if (IsFirstResponder)
 			{
-				_floatingLabel.TextColor = FloatingLabelActiveTextColor;
+                _floatingLabel.TextColor = FloatingLabelActiveTextColor;
 
-				if (_isAnimating)
-				{
-					updateLabel();
+                var shouldFloat = !string.IsNullOrEmpty(Text);
+                var isFloating = _floatingLabel.Alpha == 1f;
 
-					return;
-				}
-
-				UIView.Animate(
-					0.3f, 0.0f, 
-					UIViewAnimationOptions.BeginFromCurrentState | UIViewAnimationOptions.CurveEaseOut, 
-					() => 
-					{
-						_isAnimating = true;
-						updateLabel();
-					}, () => _isAnimating = false);
+                if (shouldFloat == isFloating)
+                {
+                    updateLabel();
+                }
+                else
+                {
+                    UIView.Animate(
+                        0.3f, 0.0f, 
+                        UIViewAnimationOptions.BeginFromCurrentState
+                        | UIViewAnimationOptions.CurveEaseOut,
+                        () => updateLabel(),
+                        () => {});
+                }
 			}
 			else
 			{
