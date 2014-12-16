@@ -1,6 +1,6 @@
-using MonoTouch.UIKit;
-using System.Drawing;
+using UIKit;
 using JVFloatSharp;
+using CoreGraphics;
 
 namespace JVFloatSharpSample
 {
@@ -19,10 +19,10 @@ namespace JVFloatSharpSample
 
 			View.BackgroundColor = UIColor.White;
 
-			float topOffset = UIApplication.SharedApplication.StatusBarFrame.Size.Height + NavigationController.NavigationBar.Frame.Size.Height;
+			float topOffset = (float)(UIApplication.SharedApplication.StatusBarFrame.Size.Height + NavigationController.NavigationBar.Frame.Size.Height);
 			UIColor floatingLabelColor = UIColor.Gray, floatingLabelActiveColor = UIColor.Blue;
 
-			var titleField = new JVFloatLabeledTextField(new RectangleF(JVFieldHMargin, topOffset, 
+			var titleField = new JVFloatLabeledTextField(new CGRect(JVFieldHMargin, topOffset, 
 			                                                            View.Frame.Size.Width - 2 * JVFieldHMargin, 
 			                                                            JVFieldHeight))
 			{
@@ -35,7 +35,7 @@ namespace JVFloatSharpSample
 			};
 			View.AddSubview(titleField);
 
-			var div1 = new UIView(new RectangleF(JVFieldHMargin, 
+			var div1 = new UIView(new CGRect(JVFieldHMargin, 
 			                                     titleField.Frame.Y + titleField.Frame.Size.Height, 
 			                                     View.Frame.Size.Width - 2 * JVFieldHMargin, 1))
 			{
@@ -43,7 +43,7 @@ namespace JVFloatSharpSample
 			};
 			View.AddSubview(div1);
 
-			var priceField = new JVFloatLabeledTextField(new RectangleF(JVFieldHMargin, 
+			var priceField = new JVFloatLabeledTextField(new CGRect(JVFieldHMargin, 
 			                                                            div1.Frame.Y + div1.Frame.Size.Height, 
 			                                                            80, JVFieldHeight))
 			{
@@ -56,7 +56,7 @@ namespace JVFloatSharpSample
 			};
 			View.AddSubview(priceField);
 
-			var div2 = new UIView(new RectangleF(JVFieldHMargin + priceField.Frame.Size.Width, 
+			var div2 = new UIView(new CGRect(JVFieldHMargin + priceField.Frame.Size.Width, 
 			                                     titleField.Frame.Y + titleField.Frame.Size.Height, 
 			                                     1, JVFieldHeight))
 			{
@@ -64,7 +64,7 @@ namespace JVFloatSharpSample
 			};
 			View.AddSubview(div2);
 
-			var locationField = new JVFloatLabeledTextField(new RectangleF(JVFieldHMargin + JVFieldHMargin + priceField.Frame.Size.Width + 1.0f, 
+			var locationField = new JVFloatLabeledTextField(new CGRect(JVFieldHMargin + JVFieldHMargin + priceField.Frame.Size.Width + 1.0f, 
 			                                                               div1.Frame.Y + div1.Frame.Size.Height,
 			                                                               View.Frame.Size.Width - 3 * JVFieldHMargin - priceField.Frame.Size.Width - 1.0f, 
 			                                                               JVFieldHeight))
@@ -77,7 +77,7 @@ namespace JVFloatSharpSample
 			};
 			View.AddSubview(locationField);
 
-			var div3 = new UIView(new RectangleF(JVFieldHMargin, 
+			var div3 = new UIView(new CGRect(JVFieldHMargin, 
 			                                     priceField.Frame.Y + priceField.Frame.Size.Height,
 			                                     View.Frame.Size.Width - 2 * JVFieldHMargin, 1))
 			{
@@ -85,7 +85,7 @@ namespace JVFloatSharpSample
 			};
 			View.AddSubview(div3);
 
-			var descriptionField = new JVFloatLabeledTextField(new RectangleF(JVFieldHMargin, 
+			var descriptionField = new JVFloatLabeledTextField(new CGRect(JVFieldHMargin, 
 			                                                                  div3.Frame.Y + div3.Frame.Size.Height,
 			                                                                  View.Frame.Size.Width - 2 * JVFieldHMargin, 
 			                                                                  JVFieldHeight))

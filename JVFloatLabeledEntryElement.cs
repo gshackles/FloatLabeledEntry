@@ -23,9 +23,9 @@
 //  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-using System.Drawing;
 using MonoTouch.Dialog;
-using MonoTouch.UIKit;
+using UIKit;
+using CoreGraphics;
 
 namespace JVFloatSharp
 {
@@ -36,7 +36,7 @@ namespace JVFloatSharp
 		public JVFloatLabeledEntryElement(string placeholder, string value = null, string caption = null, bool isPassword = false)
 			: base(caption, placeholder, value, isPassword)
 		{
-			_textField = new JVFloatLabeledTextField(RectangleF.Empty)
+			_textField = new JVFloatLabeledTextField(CGRect.Empty)
 			{
 				AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleLeftMargin,
 				Placeholder = placeholder,
@@ -63,7 +63,7 @@ namespace JVFloatSharp
 			set { _textField.FloatingLabelFont = value; }
 		}
 
-		protected override UITextField CreateTextField(RectangleF frame)
+		protected override UITextField CreateTextField(CGRect frame)
 		{
 			_textField.Frame = frame;
 
@@ -74,7 +74,7 @@ namespace JVFloatSharp
 		{
 			var cell = base.GetCell(tv);
 
-			_textField.Frame = new RectangleF(_textField.Frame.X, 0, _textField.Frame.Width, cell.Frame.Height);
+			_textField.Frame = new CGRect(_textField.Frame.X, 0, _textField.Frame.Width, cell.Frame.Height);
 
 			return cell;
 		}

@@ -24,8 +24,8 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 using System;
-using System.Drawing;
-using MonoTouch.UIKit;
+using UIKit;
+using CoreGraphics;
 
 namespace JVFloatSharp
 {
@@ -41,7 +41,7 @@ namespace JVFloatSharp
 			set { _floatingLabel.Font = value; }
 		}
 
-		public JVFloatLabeledTextField(RectangleF frame)
+		public JVFloatLabeledTextField(CGRect frame)
 			: base(frame)
 		{
 			_floatingLabel = new UILabel() 
@@ -66,13 +66,13 @@ namespace JVFloatSharp
 				_floatingLabel.Text = value;
 				_floatingLabel.SizeToFit();
 				_floatingLabel.Frame = 
-					new RectangleF(
+					new CGRect(
 						0, _floatingLabel.Font.LineHeight, 
 						_floatingLabel.Frame.Size.Width, _floatingLabel.Frame.Size.Height);
 			}
 		}
 
-		public override RectangleF TextRect(RectangleF forBounds)
+		public override CGRect TextRect(CGRect forBounds)
 		{
 			if (_floatingLabel == null)
 				return base.TextRect(forBounds);
@@ -80,16 +80,16 @@ namespace JVFloatSharp
 			return InsetRect(base.TextRect(forBounds), new UIEdgeInsets(_floatingLabel.Font.LineHeight, 0, 0, 0));
 		}
 
-		public override RectangleF EditingRect(RectangleF forBounds)
+		public override CGRect EditingRect(CGRect forBounds)
 		{
 			return InsetRect(base.EditingRect(forBounds), new UIEdgeInsets(_floatingLabel.Font.LineHeight, 0, 0, 0));
 		}
 
-		public override RectangleF ClearButtonRect(RectangleF forBounds)
+		public override CGRect ClearButtonRect(CGRect forBounds)
 		{
 			var rect = base.ClearButtonRect(forBounds);
 
-			return new RectangleF(
+			return new CGRect(
 				rect.X, rect.Y + _floatingLabel.Font.LineHeight / 2.0f, 
 				rect.Size.Width, rect.Size.Height);
 		}
@@ -104,7 +104,7 @@ namespace JVFloatSharp
 				{
 					_floatingLabel.Alpha = 1.0f;
 					_floatingLabel.Frame = 
-						new RectangleF(
+						new CGRect(
 							_floatingLabel.Frame.Location.X, 
 							2.0f, 
 							_floatingLabel.Frame.Size.Width, 
@@ -114,7 +114,7 @@ namespace JVFloatSharp
 				{
 					_floatingLabel.Alpha = 0.0f;
 					_floatingLabel.Frame = 
-						new RectangleF(
+						new CGRect(
 							_floatingLabel.Frame.Location.X,
 							_floatingLabel.Font.LineHeight,
 							_floatingLabel.Frame.Size.Width,
@@ -151,9 +151,9 @@ namespace JVFloatSharp
 			}
 		}
 
-		private static RectangleF InsetRect(RectangleF rect, UIEdgeInsets insets)
+		private static CGRect InsetRect(CGRect rect, UIEdgeInsets insets)
 		{
-			return new RectangleF(
+			return new CGRect(
 				rect.X + insets.Left, 
 				rect.Y + insets.Top, 
 				rect.Width - insets.Left - insets.Right, 
