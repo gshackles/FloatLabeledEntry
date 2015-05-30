@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>FloatLabeledEntry.iOS.Dialog</id>
+    <version>1.0.0</version>
+    <authors>gshackles</authors>
+    <owners>gshackles</owners>
+    <licenseUrl>https://github.com/gshackles/FloatLabeledEntry/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/gshackles/FloatLabeledEntry</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Float-labeled text input for iOS (MonoTouch.Dialog version)</description>
+    <releaseNotes>Initial NuGet release</releaseNotes>
+    <copyright>Copyright 2015 Greg Shackles</copyright>
+    <tags>iOS</tags>
+    <dependencies>
+      <dependency id="FloatLabeledEntry.iOS" version="1.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="../src/iOS/FloatLabeledEntry.iOS.Dialog/bin/Release/FloatLabeledEntry.iOS.Dialog.dll" target="lib/Xamarin.iOS10" />
+  </files>
+</package>

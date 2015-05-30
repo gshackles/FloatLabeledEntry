@@ -212,3 +212,5 @@ Backup*/
 UpgradeLog*.XML
 
 .DS_Store
+
+*.nupkg
