@@ -1,6 +1,6 @@
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2013 Greg Shackles
+//  Copyright (c) 2015 Greg Shackles
 //  Original implementation by Jared Verdi
 //	https://github.com/jverdi/JVFloatLabeledTextField
 //  Original Concept by Matt D. Smith
@@ -27,16 +27,16 @@ using MonoTouch.Dialog;
 using UIKit;
 using CoreGraphics;
 
-namespace JVFloatSharp
+namespace FloatLabeledEntry
 {
-	public class JVFloatLabeledEntryElement : EntryElement
+	public class FloatLabeledEntryElement : EntryElement
 	{
-		private readonly JVFloatLabeledTextField _textField;
+		private readonly FloatLabeledTextField _textField;
 
-		public JVFloatLabeledEntryElement(string placeholder, string value = null, string caption = null, bool isPassword = false)
+		public FloatLabeledEntryElement(string placeholder, string value = null, string caption = null, bool isPassword = false)
 			: base(caption, placeholder, value, isPassword)
 		{
-			_textField = new JVFloatLabeledTextField(CGRect.Empty)
+			_textField = new FloatLabeledTextField(CGRect.Empty)
 			{
 				AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleLeftMargin,
 				Placeholder = placeholder,

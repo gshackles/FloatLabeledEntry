@@ -1,10 +1,18 @@
-JVFloatSharp
+FloatLabeledEntry
 ============
 
-This is a Xamarin.iOS port of [Jared Verdi's JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField), which is a UITextField subclass with placeholders that change into floating labels when the field is populated with text.
+This library provides a UI component for Xamarin.iOS apps that creates a floating placeholder effect. There are two versions available:
 
-Credits for the concept to Matt D. Smith, and his original design:
+### FloatLabeledEntry
+
+Includes a `FloatLabeledTextField` class, based on a standard iOS text field
+
+### FloatLabeledEntry.Dialog
+
+Includes a `FloatLabeledEntryElement` class, for MonoTouch.Dialog applications
+
+---
+
+This library started as a port of [Jared Verdi's JVFloatLabeledTextField](https://github.com/jverdi/JVFloatLabeledTextField) and Matt D. Smith's original design:
 
 ![Matt D. Smith's Design](http://dribbble.s3.amazonaws.com/users/6410/screenshots/1254439/form-animation-_gif_.gif)
-
-http://dribbble.com/shots/1254439--GIF-Mobile-Form-Interaction?list=users

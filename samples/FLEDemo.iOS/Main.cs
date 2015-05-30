@@ -1,6 +1,6 @@
-using UIKit;
+﻿using UIKit;
 
-namespace JVFloatSharpSample
+namespace FLEDemo.iOS
 {
 	public class Application
 	{

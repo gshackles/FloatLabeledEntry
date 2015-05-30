@@ -1,6 +1,6 @@
 //  The MIT License (MIT)
 //
-//  Copyright (c) 2013 Greg Shackles
+//  Copyright (c) 2015 Greg Shackles
 //  Original implementation by Jared Verdi
 //	https://github.com/jverdi/JVFloatLabeledTextField
 //  Original Concept by Matt D. Smith
@@ -27,9 +27,9 @@ using System;
 using UIKit;
 using CoreGraphics;
 
-namespace JVFloatSharp
+namespace FloatLabeledEntry
 {
-	public class JVFloatLabeledTextField : UITextField 
+	public class FloatLabeledTextField : UITextField 
 	{
 		private readonly UILabel _floatingLabel;
 
@@ -41,7 +41,7 @@ namespace JVFloatSharp
 			set { _floatingLabel.Font = value; }
 		}
 
-		public JVFloatLabeledTextField(CGRect frame)
+		public FloatLabeledTextField(CGRect frame)
 			: base(frame)
 		{
 			_floatingLabel = new UILabel() 
