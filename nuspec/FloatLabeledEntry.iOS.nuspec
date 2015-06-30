@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>FloatLabeledEntry.iOS</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <authors>gshackles</authors>
     <owners>gshackles</owners>
     <licenseUrl>https://github.com/gshackles/FloatLabeledEntry/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/gshackles/FloatLabeledEntry</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Float-labeled text input for iOS</description>
-    <releaseNotes>Initial NuGet release</releaseNotes>
+    <releaseNotes>Fix crash in iOS 9</releaseNotes>
     <copyright>Copyright 2015 Greg Shackles</copyright>
     <tags>iOS</tags>
   </metadata>

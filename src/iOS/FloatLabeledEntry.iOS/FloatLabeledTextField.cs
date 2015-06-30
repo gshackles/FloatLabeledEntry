@@ -82,12 +82,18 @@ namespace FloatLabeledEntry
 
 		public override CGRect EditingRect(CGRect forBounds)
 		{
+			if (_floatingLabel == null)
+				return base.EditingRect(forBounds);
+
 			return InsetRect(base.EditingRect(forBounds), new UIEdgeInsets(_floatingLabel.Font.LineHeight, 0, 0, 0));
 		}
 
 		public override CGRect ClearButtonRect(CGRect forBounds)
 		{
 			var rect = base.ClearButtonRect(forBounds);
+
+			if (_floatingLabel == null)
+				return rect;
 
 			return new CGRect(
 				rect.X, rect.Y + _floatingLabel.Font.LineHeight / 2.0f, 
