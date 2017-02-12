@@ -44,7 +44,7 @@ namespace FloatLabeledEntry
 		public FloatLabeledTextField(CGRect frame)
 			: base(frame)
 		{
-			_floatingLabel = new UILabel() 
+			_floatingLabel = new UILabel
 			{
 				Alpha = 0.0f
 			};
@@ -141,7 +141,7 @@ namespace FloatLabeledEntry
                 }
                 else
                 {
-                    UIView.Animate(
+                    Animate(
                         0.3f, 0.0f, 
                         UIViewAnimationOptions.BeginFromCurrentState
                         | UIViewAnimationOptions.CurveEaseOut,
@@ -157,13 +157,11 @@ namespace FloatLabeledEntry
 			}
 		}
 
-		private static CGRect InsetRect(CGRect rect, UIEdgeInsets insets)
-		{
-			return new CGRect(
-				rect.X + insets.Left, 
-				rect.Y + insets.Top, 
-				rect.Width - insets.Left - insets.Right, 
-				rect.Height - insets.Top - insets.Bottom);
-		}
+		private static CGRect InsetRect(CGRect rect, UIEdgeInsets insets) =>
+			new CGRect(
+    			rect.X + insets.Left, 
+    			rect.Y + insets.Top, 
+    			rect.Width - insets.Left - insets.Right, 
+    			rect.Height - insets.Top - insets.Bottom);
 	}
 }
