@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
+    <InterfaceDefinition Include="Storyboard.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -86,6 +87,10 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="MainViewController.cs" />
     <Compile Include="DialogDemoViewController.cs" />
+    <Compile Include="StoryboardViewController.cs" />
+    <Compile Include="StoryboardViewController.designer.cs">
+      <DependentUpon>StoryboardViewController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

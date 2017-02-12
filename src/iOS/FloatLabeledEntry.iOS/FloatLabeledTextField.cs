@@ -26,35 +26,53 @@
 using System;
 using UIKit;
 using CoreGraphics;
+using Foundation;
+using System.ComponentModel;
 
 namespace FloatLabeledEntry
 {
+    [Register("Float Labeled Text Field"), DesignTimeVisible(true)]
 	public class FloatLabeledTextField : UITextField 
 	{
-		private readonly UILabel _floatingLabel;
+		private UILabel _floatingLabel;
 
-		public UIColor FloatingLabelTextColor { get; set; }
-		public UIColor FloatingLabelActiveTextColor { get; set; }
-		public UIFont FloatingLabelFont
-		{
-			get { return _floatingLabel.Font; }
-			set { _floatingLabel.Font = value; }
-		}
+        [DisplayName("Label Color"), Export("FloatingLabelTextColor"), Browsable(true)]
+        public UIColor FloatingLabelTextColor { get; set; } = UIColor.Gray;
 
-		public FloatLabeledTextField(CGRect frame)
-			: base(frame)
-		{
-			_floatingLabel = new UILabel
-			{
-				Alpha = 0.0f
-			};
+        [DisplayName("Label Active Color"), Export("FloatingLabelActiveTextColor"), Browsable(true)]
+        public UIColor FloatingLabelActiveTextColor { get; set; } = UIColor.Blue;
 
-			AddSubview(_floatingLabel);
+        public UIFont FloatingLabelFont
+        {
+            get { return _floatingLabel.Font; }
+            set { _floatingLabel.Font = value; }
+        }
 
-			FloatingLabelTextColor = UIColor.Gray;
-			FloatingLabelActiveTextColor = UIColor.Blue;
-			FloatingLabelFont = UIFont.BoldSystemFontOfSize(12);
-		}
+        public FloatLabeledTextField(CGRect frame)
+            : base(frame)
+        {
+            InitializeLabel();
+        }
+
+        public FloatLabeledTextField(IntPtr handle)
+            : base(handle)
+        {
+        }
+
+        public override void AwakeFromNib() => InitializeLabel();
+
+        private void InitializeLabel()
+        {
+            _floatingLabel = new UILabel
+            {
+                Alpha = 0.0f,
+                Font = UIFont.BoldSystemFontOfSize(12)
+            };
+
+            AddSubview(_floatingLabel);
+
+            Placeholder = Placeholder; // sets up label frame
+        }
 
 		public override string Placeholder 
 		{
