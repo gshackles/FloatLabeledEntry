@@ -31,7 +31,7 @@ using System.ComponentModel;
 
 namespace FloatLabeledEntry
 {
-    [Register("Float Labeled Text Field"), DesignTimeVisible(true)]
+    [Register("FloatLabeledTextField"), DesignTimeVisible(true)]
 	public class FloatLabeledTextField : UITextField 
 	{
 		private UILabel _floatingLabel;
