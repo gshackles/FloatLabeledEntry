@@ -1,7 +1,7 @@
 FloatLabeledEntry
 ============
 
-[![Build Status](https://www.bitrise.io/app/9a6d51a7e8d9e68b.svg?token=jv9iKL097ydCSwPLV1eTug&branch=master)](https://www.bitrise.io/app/9a6d51a7e8d9e68b)
+[![Build Status](https://www.bitrise.io/app/9a6d51a7e8d9e68b.svg?token=jv9iKL097ydCSwPLV1eTug&branch=main)](https://www.bitrise.io/app/9a6d51a7e8d9e68b)
 
 This library provides a UI component for Xamarin.iOS apps that creates a floating placeholder effect. There are two versions available:
 
